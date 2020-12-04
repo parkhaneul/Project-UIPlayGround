@@ -44,6 +44,15 @@ public class Inventory : IInventory
 {
     public List<Item> items = new List<Item>();
 
+    public Item this[int index]
+    {
+        get { return getItemInfo(index); }
+        set
+        {
+            pushItem(value,index);
+        }
+    }
+    
     public Item popItem(int index)
     {
         try
@@ -93,7 +102,7 @@ public class Inventory : IInventory
     }
 }
 
-public class Inventory_small : MonoBehaviour
+public class InventoryUI : MonoBehaviour
 {
     public GridLayoutGroup layout;
     public GameObject cellObject;
@@ -101,12 +110,19 @@ public class Inventory_small : MonoBehaviour
     public int columnCount;
     public int rowCount;
 
+    private Inventory _inventory;
+
+    public Item this[int index]
+    {
+        get { return _inventory[index]; }
+        set { _inventory[index] = value; }
+    }
+    
     public void Awake()
     {
-        settings();
     }
 
-    private void settings()
+    public void settings()
     {
         var rTransform = layout.GetComponent<RectTransform>();
         var size = rTransform.rect.size;
@@ -125,14 +141,39 @@ public class Inventory_small : MonoBehaviour
         var cell_x = size.x / columnCount;
         var cell_y = size.y / rowCount;
         
-        Debug.Log("cell size = " + cell_x + "," + cell_y);
-        
         layout.cellSize = new Vector2(cell_x,cell_y);
-        for (int i = 0; i < columnCount * rowCount; i++)
+        controllCellCount();
+    }
+
+    private void controllCellCount()
+    {
+        var cellCount = layout.transform.childCount;
+        var goalCount = columnCount * rowCount;
+
+        var startIndex = cellCount < goalCount ? cellCount : goalCount;
+        var endIndex = cellCount < goalCount ? goalCount : cellCount;
+        var step = 1;
+
+        Action<int> Func = (i) => { };
+        
+        if(cellCount < goalCount)
+            Func = (i) =>
+            {
+                var cell = Instantiate(cellObject, layout.transform);
+                cell.GetComponent<InventoryCellObject>().item = new Item("item" + i);
+            };
+
+        if (goalCount < cellCount)
+            Func = (i) =>
+            {
+                var cell = layout.transform.GetChild(i);
+                DestroyImmediate(cell.gameObject);
+            };
+
+        Debug.Log(startIndex + " | " + endIndex);
+        for (var i = startIndex; i < endIndex; i += step)
         {
-            var cell = GameObject.Instantiate(cellObject, layout.transform);
-            cell.GetComponent<InventoryCellObject>().item = new Item("item " + i);
-            cell.SetActive(true);
+            Func(cellCount < goalCount ? i : startIndex);
         }
     }
 }

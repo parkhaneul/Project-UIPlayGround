@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="32c7f3f9-b3b4-4514-bef8-2c16f562d2f4" name="Default Changelist" comment="" />
@@ -12,15 +12,18 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/InventoryScriptEditor.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/InventoryCellObject.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Inventory_small.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/InventoryUI.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/Assets/CellObject.cs" />
-        <option value="$PROJECT_DIR$/Assets/Inventory_small.cs" />
         <option value="$PROJECT_DIR$/Assets/InventoryCellObject.cs" />
+        <option value="$PROJECT_DIR$/Assets/Inventory_small.cs" />
+        <option value="$PROJECT_DIR$/Assets/InventoryScriptEditor.cs" />
+        <option value="$PROJECT_DIR$/Assets/InventoryUI.cs" />
       </list>
     </option>
   </component>
@@ -69,7 +72,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1606994452645</updated>
-      <workItem from="1606994457943" duration="2857000" />
+      <workItem from="1606994457943" duration="3075000" />
+      <workItem from="1607044874401" duration="2864000" />
     </task>
     <servers />
   </component>
@@ -83,7 +87,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
